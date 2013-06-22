@@ -108,7 +108,7 @@ module.exports = (grunt) ->
       #   files: ["#{APP_PATH}/sass/*.scss", "#{APP_PATH}/sass/**/*.scss"]
       #   tasks: ['sass:development', 'copy:development']
       jade:
-        files: ["#{APP_PATH}/partials/*.jade", "#{APP_PATH}/partials/**/*.jade"]
+        files: ["#{APP_PATH}/client_templates/*.jade", "#{APP_PATH}/client_templates/**/*.jade"]
         tasks: ['jade:development', 'client_templates']
       copied:
         files: ["#{APP_PATH}/public/*", "#{APP_PATH}/public/**/*"]
