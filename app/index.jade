@@ -1,0 +1,17 @@
+!!!
+html
+  head
+    link(href='stylesheets/main.css', rel='stylesheet', type='text/css')
+    
+    //if lt IE 9
+      link(href='stylesheets/msie.css', rel='stylesheet', type='text/css')
+      script(src="js/html5shiv.js")
+      script(src="js/raphael.min.js")
+
+    //if lt IE 8
+      script(src="js/json3-min.js")
+      script(src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js")
+      
+  body
+    h1 Hello
+    script(data-main="/js/main.js", src="/js/vendor/require.js")
