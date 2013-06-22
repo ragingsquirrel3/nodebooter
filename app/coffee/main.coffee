@@ -2,10 +2,10 @@ VENDOR = "vendor"
 requirejs.config
   paths:
     'jquery': "#{VENDOR}/jquery.min" # "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min"
-    'backbone': "#{VENDOR}/backbone-min"
-    'underscore': "#{VENDOR}/underscore-min"
-    'd3': "#{VENDOR}/d3-min"
-    'jade': "#{VENDOR}/jade-min"
+    'backbone': "#{VENDOR}/backbone.min"
+    'underscore': "#{VENDOR}/underscore.min"
+    'd3': "#{VENDOR}/d3.min"
+    'jade': "#{VENDOR}/jade.min"
   shim:
     'jquery': exports: '$'
     'backbone':
@@ -16,7 +16,7 @@ requirejs.config
     'd3': exports: 'd3'
 
 
-requirejs ['jquery'], ($) ->
+requirejs ['routers/public_router','jquery'], (PublicRouter, $) ->
   $.browser = $.browser || {}
   $.browser.iPhone = navigator.userAgent.match(/iPhone/i)?
   $.browser.iPad = navigator.userAgent.match(/iPad/i)?
@@ -37,4 +37,6 @@ requirejs ['jquery'], ($) ->
 
   $('body').addClass 'b-touch_device' if $.browser.touchDevice
   
-  console.log 'Hola Mundo'
+  # Init the app here by starting the router
+  router = new PublicRouter()
+  Backbone.history.start()

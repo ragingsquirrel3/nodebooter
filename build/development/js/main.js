@@ -6,10 +6,10 @@
   requirejs.config({
     paths: {
       'jquery': "" + VENDOR + "/jquery.min",
-      'backbone': "" + VENDOR + "/backbone-min",
-      'underscore': "" + VENDOR + "/underscore-min",
-      'd3': "" + VENDOR + "/d3-min",
-      'jade': "" + VENDOR + "/jade-min"
+      'backbone': "" + VENDOR + "/backbone.min",
+      'underscore': "" + VENDOR + "/underscore.min",
+      'd3': "" + VENDOR + "/d3.min",
+      'jade': "" + VENDOR + "/jade.min"
     },
     shim: {
       'jquery': {
@@ -31,7 +31,8 @@
     }
   });
 
-  requirejs(['jquery'], function($) {
+  requirejs(['routers/public_router', 'jquery'], function(PublicRouter, $) {
+    var router;
     $.browser = $.browser || {};
     $.browser.iPhone = navigator.userAgent.match(/iPhone/i) != null;
     $.browser.iPad = navigator.userAgent.match(/iPad/i) != null;
@@ -46,7 +47,8 @@
     if ($.browser.touchDevice) {
       $('body').addClass('b-touch_device');
     }
-    return console.log('Hola Mundo');
+    router = new PublicRouter();
+    return Backbone.history.start();
   });
 
 }).call(this);

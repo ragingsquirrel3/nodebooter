@@ -1,0 +1,38 @@
+dropshadow(shadow)
+  -ms-box-shadow: shadow
+  -moz-box-shadow: shadow
+  -webkit-box-shadow: shadow
+  box-shadow: shadow
+
+transition()
+  -ms-transition: unquote(arguments)
+  -webkit-transition: unquote(arguments)
+  -moz-transition: unquote(arguments)
+  transition: unquote(arguments)
+
+useIEFilters = true
+create-linear-gradient(fromSide, from, to, ie=useIEFilters, additional=null)
+  if !ie
+    background-color: to
+  
+  if fromSide == left
+    toSide = right
+  else if fromSide == right 
+    toSide = left
+  else if fromSide == top 
+    toSide = bottom
+  else if fromSide == bottom
+    toSide = top
+  
+  if additional 
+    additional = unquote(additional + ",")
+  
+  background: additional -webkit-linear-gradient(fromSide, from, to)
+  background: additional -moz-linear-gradient(fromSide, from, to)
+  background: additional -ms-linear-gradient(fromSide, from, to)
+  background: additional -o-linear-gradient(fromSide, from, to)
+  background: additional linear-gradient(fromSide, bottom, from, to)
+  
+  // if ie
+  //   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=from, endColorstr=to)
+  //   -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=from, endColorstr=to)

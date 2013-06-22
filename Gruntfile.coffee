@@ -48,7 +48,7 @@ module.exports = (grunt) ->
       development:
         files: [
           {
-            src: "#{APP_PATH}/stylesheets/main.styl"
+            src: "#{APP_PATH}/stylesheets/*.styl"
             dest: "#{DEV_BUILD_PATH}/stylesheets/main.css"
           }
         ]
@@ -104,9 +104,9 @@ module.exports = (grunt) ->
       coffee:
         files: ["#{APP_PATH}/coffee/*.coffee", "#{APP_PATH}/coffee/**/*.coffee"]
         tasks: 'coffee:development'
-      # sass:
-      #   files: ["#{APP_PATH}/sass/*.scss", "#{APP_PATH}/sass/**/*.scss"]
-      #   tasks: ['sass:development', 'copy:development']
+      stylus:
+        files: ["#{APP_PATH}/stylesheets/*.styl"]
+        tasks: 'stylus:development'
       jade:
         files: ["#{APP_PATH}/client_templates/*.jade", "#{APP_PATH}/client_templates/**/*.jade"]
         tasks: ['jade:development', 'client_templates']
